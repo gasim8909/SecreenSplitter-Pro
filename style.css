@@ -1,0 +1,433 @@
+:root {
+    --primary-color: #3B82F6;
+    --background-color: #ffffff;
+    --border-color: #DEE2E6;
+    --text-color: #495057;
+    --hover-color: #F8F9FA;
+    --window-dots-green: #12B886;
+    --window-dots-yellow: #FAB005;
+    --window-dots-red: #FA5252;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: #f5f7fa;
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 399px;
+    height: 600px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    border: 1px solid var(--slate-200, #E2E8F0);
+    background: var(--slate-100, #F1F5F9);
+    box-shadow: 0px 4px 44px 0px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+header {
+    width: 399px;
+    height: 52px;
+    flex-shrink: 0;
+    text-align: center;
+    border-radius: 20px 20px 0px 0px;
+    border-top: 1px solid #E4E4E7;
+    border-right: 1px solid #E4E4E7;
+    border-left: 1px solid #E4E4E7;
+    background: linear-gradient(180deg, #5B99FF 0%, #3B82F6 100%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.split-options {
+    width: 367px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: var(--slate-200, #E2E8F0);
+    margin: 16px auto;
+    padding: 4px;
+}
+
+.option-buttons {
+    display: flex;
+    position: relative;
+    gap: 4px;
+    height: 100%;
+}
+
+.option-buttons button {
+    flex: 1 1 auto;
+    padding: 10px;
+    border: 1px solid transparent;
+    background: white;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.option-buttons button.active {
+    background: white;
+    border-color: #E2E8F0;
+}
+
+.option-buttons button:not(.active) {
+    background: transparent;
+}
+
+.union-label {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #e8f0fe;
+    color: #0066ff;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.split-ratios {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 15px;
+}
+
+.ratio-row {
+    display: flex;
+    gap: 10px;
+}
+
+.window-preview {
+    width: 179px;
+    height: 119px;
+    flex-shrink: 0;
+    fill: var(--white, #FFF);
+    cursor: pointer;
+    position: relative;
+}
+
+.window-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 28px;
+    background: white;
+    border-bottom: 1px solid #E2E8F0;
+    border-radius: 8px 8px 0 0;
+    z-index: 2;
+}
+
+.option-buttons .icon {
+    color: var(--primary-color);
+    width: 24px;
+    height: 24px;
+}
+
+.window-preview:hover {
+    background: #F8FAFC;
+}
+
+.window-dots {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    padding: 8px;
+}
+
+.window-dots .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.window-dots .dot.green {
+    background-color: var(--window-dots-green);
+}
+
+.window-dots .dot.yellow {
+    background-color: var(--window-dots-yellow);
+}
+
+.window-dots .dot.red {
+    background-color: var(--window-dots-red);
+}
+
+.split-view {
+    display: flex;
+    height: 100%;
+    padding-top: 28px;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    border: none;
+    transition: flex-direction 0.3s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.split-view div {
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #64748B;
+    position: relative;
+    transition: border 0.3s ease;
+    flex: 1;
+    border-right: 1px solid #E2E8F0;
+    height: 100%;
+}
+
+.split-view div:last-child {
+    border-right: none;
+}
+
+.split-view.vertical div {
+    border-LEFT: none;
+}
+
+
+.split-view.vertical div:last-child {
+    border-bottom: none;
+}
+
+/* First row */
+.ratio-row:nth-child(1) .window-preview:nth-child(1) .split-view div:nth-child(1) { flex: 0.3; }
+.ratio-row:nth-child(1) .window-preview:nth-child(1) .split-view div:nth-child(2) { flex: 0.7; }
+.ratio-row:nth-child(1) .window-preview:nth-child(2) .split-view div:nth-child(1) { flex: 0.4; }
+.ratio-row:nth-child(1) .window-preview:nth-child(2) .split-view div:nth-child(2) { flex: 0.6; }
+
+/* Second row */
+.ratio-row:nth-child(2) .window-preview:nth-child(1) .split-view div:nth-child(1) { flex: 0.5; }
+.ratio-row:nth-child(2) .window-preview:nth-child(1) .split-view div:nth-child(2) { flex: 0.5; }
+.ratio-row:nth-child(2) .window-preview:nth-child(2) .split-view div:nth-child(1) { flex: 0.6; }
+.ratio-row:nth-child(2) .window-preview:nth-child(2) .split-view div:nth-child(2) { flex: 0.4; }
+
+/* Third row */
+.ratio-row:nth-child(3) .window-preview:nth-child(1) .split-view div:nth-child(1) { flex: 0.7; }
+.ratio-row:nth-child(3) .window-preview:nth-child(1) .split-view div:nth-child(2) { flex: 0.3; }
+.add-custom {
+    flex: 1;
+    border: 1px dashed var(--primary-color);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--primary-color);
+    font-size: 14px;
+    cursor: pointer;
+    padding: 16px;
+    background: #EFF6FF;
+}
+
+.custom-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--primary-color);
+}
+
+.add-custom:hover {
+    background: #DBEAFE;
+}
+
+.bottom-controls {
+    margin-top: 24px;
+    padding: 0 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.test-control {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background: #f5f7fa;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.test-control span {
+    font-size: 14px;
+}
+
+.test-control .ratio {
+    color: #888;
+    margin-left: 8px;
+}
+
+.actions {
+    margin-left: auto;
+    display: flex;
+    gap: 8px;
+}
+
+.actions button {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.actions .edit {
+    background: #e8f0fe;
+    color: var(--primary-color);
+}
+
+.actions .delete {
+    background: #fee8e8;
+    color: #ff4444;
+}
+
+.fullscreen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 16px;
+    background: white;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    color: #1C2024;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.fullscreen:hover {
+    background: #F8FAFC;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 24px;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#ratioForm {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#ratioForm input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.ratio-inputs {
+    display: flex;
+    gap: 16px;
+}
+
+.ratio-input {
+    flex: 1;
+    position: relative;
+}
+
+.ratio-input input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 14px;
+    padding-right: 30px;
+}
+
+.ratio-input span {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-color);
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.modal-buttons button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.save-btn {
+    background: var(--primary-color);
+    color: white;
+}
+
+.cancel-btn {
+    background: var(--hover-color);
+    color: var(--text-color);
+}

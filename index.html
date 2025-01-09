@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScreenSplitter Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="main.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ScreenSplitter Pro</h1>
+        </header>
+        
+        <div class="split-options">
+            <div class="option-buttons">
+                <button class="active">
+                    <img src="./src/assets/icons/horizontal.svg" alt="" class="icon horizontal-icon"> Horizontal
+                </button>
+                <button>
+                    <img src="./src/assets/icons/vertical.svg" alt="" class="icon vertical-icon"> Vertical
+                </button>
+            </div>
+        </div>
+
+        <div class="split-ratios">
+            <div class="ratio-row">
+                <div class="window-preview">
+                    <div class="window-header">
+                        <div class="window-dots">
+                            <span class="dot green"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot red"></span>
+                        </div>
+                    </div>
+                    <div class="split-view">
+                        <div>30%</div>
+                        <div>70%</div>
+                    </div>
+                </div>
+                <div class="window-preview">
+                    <div class="window-header">
+                    <div class="window-dots">
+                        <span class="dot green"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot red"></span>
+                    </div>
+                    </div>
+                    <div class="split-view vertical">
+                        <div>40%</div>
+                        <div>60%</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ratio-row">
+                <div class="window-preview">
+                    <div class="window-header">
+                    <div class="window-dots">
+                        <span class="dot green"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot red"></span>
+                    </div>
+                    </div>
+                    <div class="split-view">
+                        <div>50%</div>
+                        <div>50%</div>
+                    </div>
+                </div>
+                <div class="window-preview">
+                    <div class="window-header">
+                    <div class="window-dots">
+                        <span class="dot green"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot red"></span>
+                    </div>
+                    </div>
+                    <div class="split-view vertical">
+                        <div>60%</div>
+                        <div>40%</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ratio-row">
+                <div class="window-preview">
+                    <div class="window-header">
+                    <div class="window-dots">
+                        <span class="dot green"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot red"></span>
+                    </div>
+                    </div>
+                    <div class="split-view">
+                        <div>70%</div>
+                        <div>30%</div>
+                    </div>
+                </div>
+                <div class="add-custom">
+                    <img src="./src/assets/icons/add-custom.svg" alt="" class="custom-icon add-custom-icon">
+                    Add Custom Ratio
+                </div>
+            </div>
+        </div>
+        
+        <!-- Custom Ratio Modal -->
+        <div class="modal" id="customRatioModal">
+            <div class="modal-content">
+                <form id="ratioForm">
+                    <input type="text" id="ratioName" placeholder="Name (e.g., 'Wide Left')" required>
+                    <div class="ratio-inputs">
+                        <div class="ratio-input">
+                            <input type="number" id="leftRatio" placeholder="Left %" min="1" max="99" required>
+                            <span>%</span>
+                        </div>
+                        <div class="ratio-input">
+                            <input type="number" id="rightRatio" placeholder="Right %" min="1" max="99" required>
+                            <span>%</span>
+                        </div>
+                    </div>
+                    <div class="modal-buttons">
+                        <button type="submit" class="save-btn">
+                            <img src="./src/assets/icons/save.svg" alt="" class="icon save-icon">
+                            Save Ratio
+                        </button>
+                        <button type="button" class="cancel-btn">
+                            <img src="./src/assets/icons/cancel.svg" alt="" class="icon cancel-icon">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="bottom-controls">
+            <button class="fullscreen">
+                <img src="./src/assets/icons/fullscreen.svg" alt="" class="icon fullscreen-icon">
+                Toggle Fullscreen
+            </button>
+        </div>
+    </div>
+</body>
+</html>
